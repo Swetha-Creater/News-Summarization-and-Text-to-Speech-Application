@@ -1,8 +1,18 @@
 # **AI-Agents NewsWise**
 
-## Project Overview
-
 AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetches, summarizes, and interprets the latest news articles for any company or topic of interest. It leverages Google Gemini models for summarization and querying, sentiment classification, and key topic extraction — all packaged in an interactive Streamlit UI backed by a FastAPI server.
+
+### Features:
+- News Extraction: Fetches and parses the latest news articles about a company using web scraping from google news.
+- Text Summarization: Uses Gemini API to generate concise summaries for each news article.
+- Sentiment Analysis: Detects and classifies the sentiment (Positive, Negative, Neutral) of each article.
+- Topic Detection: Extracts key topics and entities using YAKE and NLP techniques for topic clustering.
+- Comparative Analysis: Compares sentiment distribution, topic overlap, and coverage differences across articles.
+- Query-based Insights: Supports follow-up questions from users using a custom Query Agent powered by Gemini to extract intelligent insights.
+- Text-to-Speech: Converts the final summarized insight into Hindi audio using gTTS.
+- Streamlit UI: Interactive and user-friendly dashboard to enter company names, view analysis, ask questions, and listen to the Hindi audio summary.
+- FastAPI Backend: Robust API that performs heavy processing and serves the data to the frontend.
+- Agent-Based Modular Architecture: Clean separation of concerns using analysis_agent and query_agent for scalability and maintenance.
 
 ### 1. Project Setup
 •	Requirements:
@@ -66,10 +76,16 @@ Response: JSON with insights
 
 ### Third-Party API Usage
 • Google Gemini: Summarization, Sentiment, Query (google-generativeai SDK)
+
 • gTTS (Google TTS): Hindi audio output (gtts library)
+
 • Google News RSS: News articles fetching (requests + BeautifulSoup)
 
-### Assumptions & Limitations
+ ### Comparative Analysis
+ Comparative Analysis examines differences and similarities in news coverage across articles. It highlights variations in sentiment, topic overlap, and 
+ coverage intensity for better contextual understanding.
+
+## Assumptions & Limitations
 Assumptions
 • The company name returns relevant articles from Google News.
 • The user has a valid Gemini API key.
