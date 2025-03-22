@@ -13,35 +13,47 @@ AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetche
 ###•	Installation Steps:
 
 1. Clone the Repository:
-   git clone https://github.com/your-username/ai-agents-newswise.git
+
+   ```bash
+   git clone https://github.com/Swetha-Creater/News-Summarization-and-Text-to-Speech-Application.git
    cd ai-agents-newswise
+   
 2. Create a virtual environment (optional but recommended):
+   ```bash
    python -m venv env
    source env/bin/activate  # or env\Scripts\activate on Windows
-3. Install Dependencies:
+   
+5. Install Dependencies:
+    ```bash
    pip install -r requirements.txt
-4. Add API Keys in `.env`:
+   
+7. Add API Keys in `.env`:
+   ```bash
    GEMINI_API_KEY=your_gemini_api_key
-5. Run the Application:
+   
+9. Run the Application:
+    ```bash
    streamlit run app.py
-2. Model Details
+   
+## Model Details
 
-Summarization
+### Summarization
 • Model: gemini-2.0-flash by Google
 • Purpose: To summarize news articles into 2-3 lines.
 • Implementation: Prompt-based summarization using Google Generative AI API.
 
-Sentiment Analysis
+### Sentiment Analysis
 • Model: gemini-2.0-flash
 • Purpose: Determine article sentiment – Positive, Negative, or Neutral.
 • Implementation: Prompt-based zero-shot sentiment classification.
 
-Text-to-Speech (TTS)
+### Text-to-Speech (TTS)
 • Model: gTTS (Google Text-to-Speech)
 • Purpose: Convert final business insight into Hindi audio.
 • Implementation: Generates .mp3 from the final insight using gTTS.
 
-4. API Development
+### API Development
+
 Backend service uses FastAPI running on localhost:8000
 Exposed Endpoint:
 GET /analyze/?company=<company_name>
@@ -52,20 +64,26 @@ Method: GET
 Headers: None required
 Response: JSON with insights
 
-5. Third-Party API Usage
+### Third-Party API Usage
 • Google Gemini: Summarization, Sentiment, Query (google-generativeai SDK)
 • gTTS (Google TTS): Hindi audio output (gtts library)
 • Google News RSS: News articles fetching (requests + BeautifulSoup)
 
-6. Assumptions & Limitations
+### Assumptions & Limitations
 Assumptions
 • The company name returns relevant articles from Google News.
 • The user has a valid Gemini API key.
 • The system is expected to run locally or on Hugging Face.
-Limitations
-• Gemini API may return incomplete or rate-limited responses.
-• RSS feeds might lack enough articles.
-• gTTS may fail on long/malformed inputs.  
-• Summarization quality relies on Gemini's context interpretation.
+
+### Future Improvements
+
+1. Multilingual Support
+Add support for more languages (Tamil, Telugu, Kannada, etc.) for both summary and TTS using gTTS, Bark, or Google Translate API.
+
+2. Live News Stream
+Integrate with live news APIs (e.g., NewsAPI, GNews) to fetch real-time news.
+
+3. Voice-based Input & Output
+Allow users to speak their queries using speech recognition.
 
 
