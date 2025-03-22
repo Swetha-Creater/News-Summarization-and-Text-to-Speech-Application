@@ -1,6 +1,6 @@
 # **AI-Agents NewsWise**
 
-AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetches, summarizes, and interprets the latest news articles for any company or topic of interest. It leverages Google Gemini models for summarization and querying, sentiment classification, and key topic extraction — all packaged in an interactive Streamlit UI backed by a FastAPI server.
+AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetches, summarizes, and interprets the latest news articles for any company or topic of interest. It leverages Google Gemini models for summarization and querying, sentiment classification, and key topic extraction all packaged in an interactive Streamlit UI backed by a FastAPI server.
 
 ## Features:
 
@@ -42,6 +42,7 @@ AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetche
    streamlit run app.py
 
 ## Project Structure
+
 ![image](https://github.com/user-attachments/assets/a1310c26-0e1f-48b8-91ad-9b9bfdb0c4c4)
 
    
