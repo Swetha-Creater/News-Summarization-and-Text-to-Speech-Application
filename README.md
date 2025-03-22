@@ -71,15 +71,9 @@ AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetche
 
 ### API Development
 
-Backend service uses FastAPI running on localhost:8000
-Exposed Endpoint:
-GET /analyze/?company=<company_name>
-Returns summarized articles, sentiment analysis, keyword extraction, and final insight with Hindi audio.
-Testing via Postman:
-Endpoint: http://localhost:8000/analyze/?company=TCS
-Method: GET
-Headers: None required
-Response: JSON with insights
+The application exposes API endpoints for communication between the frontend and backend:
+
+GET /analyze/?company={company_name}: Fetches news articles for a given company and perform analysis and query system.
 
 ### Third-Party API Usage
 • Google Gemini: Summarization, Sentiment, Query (google-generativeai SDK)
