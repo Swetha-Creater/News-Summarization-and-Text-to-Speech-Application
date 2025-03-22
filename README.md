@@ -1,4 +1,4 @@
-#### **AI-Agents NewsWise**
+### **AI-Agents NewsWise**
 
 ### Project Overview
 
