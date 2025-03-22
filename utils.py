@@ -8,17 +8,17 @@ import google.generativeai as genai
 from yake import KeywordExtractor
 from collections import Counter
 
-# ✅ Ensure NLTK data is downloaded
+# Ensure NLTK data is downloaded
 nltk.download("vader_lexicon")
 
-# ✅ Load environment variables
+# Load environment variables
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 if not GEMINI_API_KEY:
-    raise ValueError("⚠️ Gemini API Key missing! Please set GEMINI_API_KEY in .env")
+    raise ValueError("Gemini API Key missing! Please set GEMINI_API_KEY in .env")
 
-# ✅ Configure Gemini
+# Configure Gemini
 genai.configure(api_key=GEMINI_API_KEY)
 
 
@@ -41,7 +41,7 @@ def fetch_latest_news(query: str) -> list:
             for article in articles
         ]
     except Exception as error:
-        print(f"❌ Error fetching news: {error}")
+        print(f" Error fetching news: {error}")
         return []
 
 
@@ -53,7 +53,7 @@ def generate_summary(text: str) -> str:
         response = model.generate_content(prompt)
         return response.text.strip()
     except Exception as error:
-        print(f"❌ Error generating summary: {error}")
+        print(f" Error generating summary: {error}")
         return "Summary unavailable"
 
 

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from utils import analyze_news_trends
 from audio import HindiInsightSpeaker
+import uvicorn
 
 app = FastAPI()
 
@@ -33,4 +34,14 @@ def analyze(company: str):
 
     result["HindiAudio"] = audio_data
     return result
+
+
+# Optional: Run directly using `python backend.py`
+def main():
+    uvicorn.run("backend:app", host="0.0.0.0", port=8000, reload=True)
+
+
+if __name__ == "__main__":
+    main()
+
 
