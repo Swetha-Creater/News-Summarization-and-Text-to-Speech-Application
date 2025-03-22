@@ -7,7 +7,7 @@ from agents.analysis_agent import NewsAnalysisAgent
 from agents.query_agent import NewsQueryAgent
 from audio import HindiInsightSpeaker
 
-# ✅ Start FastAPI backend in a background thread (only once)
+# Start FastAPI backend in a background thread (only once)
 def start_fastapi():
     subprocess.Popen([
         "uvicorn", "backend:app", "--host", "0.0.0.0", "--port", "8000"
@@ -19,7 +19,7 @@ if "fastapi_started" not in st.session_state:
     st.session_state["fastapi_started"] = True
     time.sleep(2)  # Wait for FastAPI to fully start
 
-# ✅ Streamlit UI
+# Streamlit UI
 st.set_page_config(
     page_title="AI-Powered News Analyser and Query System", layout="wide"
 )
@@ -32,7 +32,7 @@ company_name = st.text_input("Enter Company Name:", "")
 # Run analysis
 if st.button("Analyze News"):
     if company_name:
-        with st.spinner("🔍 Calling backend to analyze..."):
+        with st.spinner("Calling backend to analyze..."):
             try:
                 response = requests.get(
                     f"http://localhost:8000/analyze/?company={company_name}"
@@ -120,7 +120,7 @@ if "news_report" in st.session_state:
             query_agent = NewsQueryAgent(st.session_state["news_report"])
             answer = query_agent.ask(user_query)
 
-        st.markdown("### 🤖 Answer")
+        st.markdown("### Answer")
         st.success(answer)
 
 

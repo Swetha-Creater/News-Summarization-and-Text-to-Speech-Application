@@ -21,7 +21,7 @@ class HindiInsightSpeaker:
         try:
             return GoogleTranslator(source='auto', target='hi').translate(text)
         except Exception as e:
-            print("❌ Translation Error:", e)
+            print(" Translation Error:", e)
             return "अनुवाद में त्रुटि हुई। कृपया पुनः प्रयास करें।"
 
     def generate_hindi_speech(self, final_insight: str) -> Dict[str, Any]:
@@ -38,14 +38,14 @@ class HindiInsightSpeaker:
                 "success": True,
                 "hindi_text": hindi_text,
                 "audio_file": audio_path,
-                "message": "✅ Hindi audio generated successfully."
+                "message": " Hindi audio generated successfully."
             }
         except Exception as e:
             return {
                 "success": False,
                 "hindi_text": None,
                 "audio_file": None,
-                "message": f"❌ Error generating audio: {str(e)}"
+                "message": f" Error generating audio: {str(e)}"
             }
 
 

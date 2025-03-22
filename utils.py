@@ -68,7 +68,7 @@ def assess_sentiment(text: str) -> str:
         response = model.generate_content(prompt)
         return response.text.strip()
     except Exception as error:
-        print(f"❌ Sentiment analysis failed: {error}")
+        print(f"Sentiment analysis failed: {error}")
         return "Neutral"
 
 
@@ -105,7 +105,7 @@ def comparative_analysis(news_data: list) -> dict:
         response = model.generate_content(prompt_text)
         coverage_differences = response.text.strip()
     except Exception as error:
-        print(f"❌ Gemini AI Error: {error}")
+        print(f"Gemini AI Error: {error}")
         coverage_differences = "- AI Analysis Unavailable\n- Unable to retrieve insights"
 
     all_topics = [set(article["Topics"]) for article in news_data]
@@ -127,7 +127,7 @@ def comparative_analysis(news_data: list) -> dict:
         response_summary = model.generate_content(prompt_summary)
         final_analysis = response_summary.text.strip()
     except Exception as error:
-        print(f"❌ Gemini AI Summary Error: {error}")
+        print(f"Gemini AI Summary Error: {error}")
         final_analysis = "AI Summary Unavailable"
 
     return {
@@ -188,7 +188,7 @@ def gemini_query_handler(user_query: str, article_data: dict) -> str:
         response = model.generate_content(prompt)
         return response.text.strip()
     except Exception as e:
-        return f"❌ Error: {str(e)}"
+        return f"Error: {str(e)}"
 
 
 
