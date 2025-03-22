@@ -86,10 +86,12 @@ GET /analyze/?company={company_name}: Fetches news articles for a given company 
  Comparative Analysis examines differences and similarities in news coverage across articles. It highlights variations in sentiment, topic overlap, and 
  coverage intensity for better contextual understanding.
 
-## Assumptions & Limitations
-Assumptions
+## Assumptions
+
 • The company name returns relevant articles from Google News.
+
 • The user has a valid Gemini API key.
+
 • The system is expected to run locally or on Hugging Face.
 
 ## Future Improvements
