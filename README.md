@@ -1,3 +1,4 @@
+---
 title: NewsSummary Query
 emoji: 🐢
 colorFrom: green
@@ -7,7 +8,7 @@ sdk_version: 1.43.2
 app_file: app.py
 pinned: false
 license: mit
-
+---
 
 # **AI-Agents NewsWise**
 
