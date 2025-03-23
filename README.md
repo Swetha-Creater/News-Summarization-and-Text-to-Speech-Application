@@ -34,7 +34,7 @@ AI-Agents NewsWise is a multi-agent, AI-powered news analysis system that fetche
 
    ```bash
    git clone https://github.com/Swetha-Creater/News-Summarization-and-Text-to-Speech-Application.git
-   cd ai-agents-newswise
+   cd News-Summarization-and-Text-to-Speech-Application
    
 2. Create a virtual environment (optional but recommended):
    ```bash
