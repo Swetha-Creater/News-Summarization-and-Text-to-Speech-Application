@@ -143,9 +143,38 @@ def comparative_analysis(news_data: list) -> dict:
     }
 
 
+def is_company_name(user_input: str) -> bool:
+    """Uses Gemini to validate if the input is a company name more reliably."""
+    try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        prompt = f"""
+You are an AI assistant. Your job is to decide if the input is a company name.
+Answer only with "Yes" or "No".
+
+Examples:
+Input: Apple → Yes
+Input: Tesla → Yes
+Input: Elon Musk → No
+Input: Narendra Modi → No
+Input: Uber → Yes
+Input: Cricket → No
+
+Input: {user_input}
+Answer:"""
+        response = model.generate_content(prompt)
+        result = response.text.strip().lower()
+        return result.startswith("yes")
+    except Exception as e:
+        print("❌ Company validation failed:", e)
+        return False
+
 def analyze_news_trends(company_name: str) -> dict:
     """Fetches, processes, and analyzes news for a company."""
     try:
+        # ✅ Validate input before proceeding
+        if not is_company_name(company_name):
+            return {"error": f"'{company_name}' does not appear to be a valid company name."}
+
         articles = fetch_latest_news(company_name)
         if not articles:
             return {"error": "No relevant news articles found."}
