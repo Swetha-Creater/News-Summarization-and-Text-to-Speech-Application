@@ -2,6 +2,7 @@
 streamlit==1.43.1
 fastapi==0.115.7
 uvicorn==0.34.0
+lxml
 
 # AI & NLP
 google-generativeai==0.8.4
