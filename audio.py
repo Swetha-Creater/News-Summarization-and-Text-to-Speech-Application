@@ -6,7 +6,7 @@ from gtts import gTTS
 from deep_translator import GoogleTranslator
 import base64
 from io import BytesIO
-
+import time 
 
 
 class HindiInsightSpeaker:
