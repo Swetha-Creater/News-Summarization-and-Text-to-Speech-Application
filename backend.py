@@ -1,33 +1,48 @@
-import os
-import tempfile
-import re
-from typing import Dict, Any
-from gtts import gTTS
-from deep_translator import GoogleTranslator
-import base64
-from io import BytesIO
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from utils import analyze_news_trends
+from audio import HindiInsightSpeaker
+import uvicorn
+
+app = FastAPI()
+
+# Enable CORS for frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change to specific domain(s) in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-class HindiInsightSpeaker:
-    def __init__(self):
-        self.temp_dir = tempfile.gettempdir()
+@app.get("/analyze/")
+def analyze(company: str):
+    """
+    Main API endpoint to analyze company news.
+    Returns structured report including sentiment, topics, and Hindi audio.
+    """
+    result = analyze_news_trends(company)
 
-    def clean_text(self, text: str) -> str:
-        """Clean the text for translation and TTS."""
-        text = re.sub(r"http\S+", "", text)
-        text = re.sub(r"[^\w\s.,?!;:\-\'\"()]", " ", text)
-        return re.sub(r"\s+", " ", text).strip()
+    if "error" in result:
+        return {"error": result["error"]}
 
-    def translate_to_hindi(self, text: str) -> str:
-        """Translate English text to Hindi using Deep Translator."""
-        try:
-            return GoogleTranslator(source='auto', target='hi').translate(text)
-        except Exception as e:
-            print(" Translation Error:", e)
-            return "अनुवाद में त्रुटि हुई। कृपया पुनः प्रयास करें।"
+    speaker = HindiInsightSpeaker()
+    audio_data = speaker.generate_hindi_speech(
+        result["Sentiment Comparison"]["Final Insight"]
+    )
 
-    def generate_hindi_speech(self, final_insight: str) -> Dict[str, Any]:
-        """Convert final insight to Hindi speech using gTTS."""
+    result["HindiAudio"] = audio_data
+    return result
+
+
+# Optional: Run directly using `python backend.py`
+def main():
+    uvicorn.run("backend:app", host="0.0.0.0", port=8000, reload=True)
+
+
+if __name__ == "__main__":
+    main()
         try:
             cleaned_text = self.clean_text(final_insight)
             hindi_text = self.translate_to_hindi(cleaned_text)
