@@ -18,21 +18,20 @@ app.add_middleware(
 
 @app.get("/analyze/")
 def analyze(company: str):
-    """
-    Main API endpoint to analyze company news.
-    Returns structured report including sentiment, topics, and Hindi audio.
-    """
     result = analyze_news_trends(company)
 
     if "error" in result:
         return {"error": result["error"]}
 
     speaker = HindiInsightSpeaker()
-    audio_data = speaker.generate_hindi_speech(
+    audio_response = speaker.generate_hindi_speech(
         result["Sentiment Comparison"]["Final Insight"]
     )
 
-    result["HindiAudio"] = audio_data
+    result["HindiAudio"] = audio_response.get("audio_base64")
+    result["HindiText"] = audio_response.get("hindi_text")
+    result["Message"] = audio_response.get("message")
+
     return result
 
 
