@@ -6,7 +6,7 @@ import requests
 from agents.analysis_agent import NewsAnalysisAgent
 from agents.query_agent import NewsQueryAgent
 from audio import HindiInsightSpeaker
-
+import base64
 
 def start_fastapi():
     subprocess.Popen([
@@ -85,8 +85,13 @@ def main():
         if "HindiAudio" in news_report:
             audio_result = news_report["HindiAudio"]
             if audio_result["success"]:
-                st.audio(audio_result["audio_file"])
-                st.markdown(f"**Hindi Translation:** {audio_result['hindi_text']}")
+                # Decode base64 audio and play it in Streamlit
+                if audio_result["success"] and audio_result["audio_base64"]:
+                    audio_bytes = base64.b64decode(audio_result["audio_base64"])
+                    st.audio(audio_bytes, format="audio/mp3")
+                else:
+                    st.warning(audio_result.get("message", "Failed to generate audio."))
+                    st.markdown(f"**Hindi Translation:** {audio_result['hindi_text']}")
             else:
                 st.error(audio_result["message"])
 
