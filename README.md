@@ -114,5 +114,12 @@ GET /analyze/?company={company_name}: Fetches news articles for a given company 
 2. **Live News Stream**: Integrate with live news APIs (e.g., NewsAPI, GNews) to fetch real-time news.
 
 3. **Voice-based Input & Output**: Allow users to speak their queries using speech recognition.
+---
+## Demo
+
+<video src="demo.webm" controls style="width: 100%; max-width: 700px; border-radius: 10px;">
+  Your browser does not support the video tag.
+</video>
+
 
 
