@@ -116,10 +116,11 @@ GET /analyze/?company={company_name}: Fetches news articles for a given company 
 3. **Voice-based Input & Output**: Allow users to speak their queries using speech recognition.
 ---
 ## Demo
+## 🎥 Demo
 
 <video src="demo.webm" controls style="width: 100%; max-width: 700px; border-radius: 10px;">
-  Your browser does not support the video tag.
 </video>
+
 
 
 
